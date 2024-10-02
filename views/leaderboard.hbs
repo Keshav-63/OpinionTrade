@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpinionTrade</title>
+    <link rel="icon" href="https://t4.ftcdn.net/jpg/05/97/06/33/360_F_597063320_zWzNOwBIEDbsUPUj0NAtilvkGVMdGTPz.jpg"
+         type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="tabsbox.js" defer></script>
+    <style>
+        #box1 {
+            margin-top: 20px;
+            width: 45%;
+            background-color: transparent;
+            border: 2px solid rgb(88, 124, 255);
+            border-radius: 15px;
+            transition-duration: 0.2s;
+        }
+
+        #box1:hover {
+            box-shadow: 1px 1px 10px rgb(93, 93, 93);
+        }
+
+        #box2:hover {
+            box-shadow: 1px 1px 10px rgb(93, 93, 93);
+        }
+
+        #box2 {
+            margin-top: 20px;
+            width: 45%;
+            background-color: transparent;
+            border: 1px solid #b0a1db;
+            border-radius: 15px;
+            transition-duration: 0.2s;
+        }
+
+        #rank {
+            width: 100%;
+            height: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            box-shadow: 0px 1px 5px gainsboro;
+            border-bottom: 1px solid #b0a1db;
+            
+
+        }
+
+        .ranked {
+            width: 30%;
+            height: 100%;
+            display: grid;
+            align-items: end;
+
+            text-align: center;
+            padding-bottom: 10px;
+
+
+
+
+        }
+
+        .rank1 {
+            font-size: 21px;
+            width: 100%;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 3px solid black;
+            border-radius: 10px;
+            background-color: white;
+
+        }
+
+        .rank2 {
+
+            width: 100%;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 3px solid black;
+            border-radius: 10px;
+            background-color: white;
+
+        }
+
+        .rank3 {
+
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 3px solid black;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        #rankmore {
+            width: 100%;
+            height: 51%;
+
+            display: block;
+            overflow: scroll;
+            overflow-x: hidden;
+
+
+        }
+
+        #rankmore::-webkit-scrollbar {
+            display: none;
+        }
+
+        .rankedmore {
+            margin-left: 10%;
+            margin-top: 10px;
+            width: 80%;
+            height: 20%;
+            background-color: rgb(255, 255, 255);
+            margin-bottom: 10px;
+            border: 1px solid rgb(197, 197, 197);
+            box-shadow: 0px 5px 5px gainsboro;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .rankname {
+            padding-left: 12%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rankcoin {
+            padding-right: 12%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="header1">
+                <div id="logo"><img
+                        src="https://t4.ftcdn.net/jpg/05/97/06/33/360_F_597063320_zWzNOwBIEDbsUPUj0NAtilvkGVMdGTPz.jpg"
+                        width="100%" height="100%" style="object-fit: cover;"></div>
+                <div class="texts">
+                    <a href="/account">
+                        <p style="color: rgb(45, 45, 45);">Account</p>
+                    </a>
+                </div>
+                <div class="texts">
+                    <a href="https://vcet.edu.in/">
+                        <p style="color: rgb(41, 41, 41); ">VCET</p>
+                    </a>
+                </div>
+                <div class="texts">
+                    <a href="/allevent">
+                        <p style="color: rgb(45, 45, 45);">Poll</p>
+                    </a>
+                </div>
+                <div class="texts">
+                    <a href="/customer">
+                        <p style="color: rgb(45, 45, 45);">Customers</p>
+                    </a>
+                </div>
+
+                <div class="texts">
+                    <a href="/leaderboard">
+                        <p
+                            style="display: flex ; align-items: center; justify-content: center; color: rgb(45, 45, 45);">
+                            Leaderboard <img src="https://cdn-icons-png.flaticon.com/128/7799/7799179.png"
+                                style=" width: 27px; padding-left: 5px; "></p>
+                    </a>
+                </div>
+                <div id="contactde">
+                    <p style=text-align:center;><u>Contact Us</u> </p>
+                    <p>9869-33-0911</p>
+                </div>
+            </div>
+            <div id="header2">
+                <div class="icon"><i class="ri-search-line"> </i></div>
+                <div class="icon"><i class="ri-global-line"> </i></div>
+                <div id="login">
+                    <form action="/logout" method="post">
+                        <button type="submit"
+                            style="border-radius: 55px; padding: 10px; color: white; background: #000; width: 80px; cursor: pointer; ">
+                            <i class="ri-user-3-fill"></i>Logout</button>
+
+                    </form>
+                    {{!-- <a href="/login_signup">
+                        <p>Logout</p>
+                    </a> --}}
+                </div>
+                <div id="try">
+                    <p>OpinionTrade</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="fakeheader"></div>
+        <div id="page1">
+            <div id="strip">
+
+                <div class="wrapper">
+                    <div class="icons"><i id="left" class="ri-arrow-left-wide-line"></i></div>
+                    <ul class="tabs-box">
+                        <li class="tab"><a href="/allevent">Allevent</a></li>
+                        <li class="tab"><a href="/cricket">Cricket</a></li>
+                        <li class="tab"><a href="/tech">Technology</a></li>
+                        <li class="tab"><a href="/sustain">Sustainability</a></li>
+                        <li class="tab"><a href="/health">Health & Wellness</a></li>
+                        <li class="tab"><a href="/education">Education</a></li>
+                        <li class="tab"><a href="/entertainment">Entertainment</a></li>
+                        <li class="tab"><a href="/sports">Sports</a></li>
+                        <li class="tab"><a href="/consumer">Consumer Preferences</a></li>
+                        <li class="tab"><a href="/gadgets">Gadgets</a></li>
+                        <li class="tab"><a href="/tour">Tour & Travel</a></li>
+                        <li class="tab"><a href="/economy">Finance & Economy</a></li>
+                        <li class="tab"><a href="/sharemarket">Share Market</a></li>
+                        <li class="tab"><a href="/gaming">Gaming & Esports</a></li>
+                        <li class="tab"><a href="/food">Food & Beverages</a></li>
+                    </ul>
+                    <div class="icons"><i id="right" class="ri-arrow-right-wide-fill"></i></div>
+                </div>
+            </div>
+
+
+            <div id="content" style="overflow: visible; justify-content: space-around;">
+
+                <div id="box2">
+                    <div id="name"
+                        style="text-align: center; font-size: 30px; border-bottom: 1px solid #bcacec; padding-top: 10px; background-image: linear-gradient(#9172EC, #bcacec) ; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                        POLL
+                    </div>
+
+
+
+                    <div id="rank">
+                        <div class="ranked" style="position: relative; top: 25px; ">
+                            <div class="avatarimg"><img src="/uploads/{{pollavatarrank2}}" alt="Profile Image"
+                                    style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid black ;  box-shadow: 0px 5px 10px rgb(156, 156, 156);">
+                            </div>
+
+
+                            <div class="ranknumber"
+                                style="display: flex; justify-content: center; align-items: center; position: relative; top: -20px;">
+                                <h3
+                                    style="background-color: #CE8946; border-radius: 50%; width: 25px; height: 25px; font-style: oblique; ">
+                                    2
+                                </h3>
+                            </div>
+
+
+                            <p style="font-weight: lighter; font-size: 22px; position: relative; top: -22px;">
+                                {{pollrank2}}</p>
+
+                            <h3 style="color: #6c6c6c; position: relative; top: -22px; font-size: 18px;">{{polledrank2}}
+                                Polls
+                            </h3>
+                        </div>
+                        <div class="ranked">
+                            <div class="avatarimg"><img src="/uploads/{{pollavatarrank1}}" alt="Profile Image"
+                                    style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid black ;  box-shadow: 0px 5px 10px rgb(99, 99, 99);">
+                            </div>
+
+
+                            <div class="ranknumber"
+                                style="display: flex; justify-content: center; align-items: center; position: relative; top: -20px;">
+                                <h3
+                                    style="background-color: gold; border-radius: 50%; width: 30px; height: 30px; font-style: oblique; ">
+                                    1
+                                </h3>
+                            </div>
+
+                            <p style="font-weight: lighter; font-size: 27px; position: relative; top: -22px;">
+                                {{pollrank1}}</p>
+
+                            <h3 style="color: #6c6c6c; position: relative; top: -22px;">{{polledrank1}} Polls</h3>
+                        </div>
+                        <div class="ranked" style="position: relative; top: 25px;">
+                            <div class="avatarimg"><img src="/uploads/{{pollavatarrank3}}" alt="Profile Image"
+                                    style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid black ;  box-shadow: 0px 5px 10px rgb(156, 156, 156);">
+                            </div>
+
+
+                            <div class="ranknumber"
+                                style="display: flex; justify-content: center; align-items: center; position: relative; top: -20px;">
+                                <h3
+                                    style="background-color: #BCC6CC ; border-radius: 50%; width: 25px; height: 25px; font-style: oblique; ">
+                                    3
+                                </h3>
+                            </div>
+
+                            <p style="font-weight: lighter; font-size: 22px; position: relative; top: -22px;">
+                                {{pollrank3}}</p>
+
+                            <h3 style="color: #6c6c6c; position: relative; top: -22px; font-size: 18px;">{{polledrank3}}
+                                Polls
+                            </h3>
+                        </div>
+                    </div>
+                    <div id="rankmore">
+
+                        <div class="rankedmore">
+                            <div class="rankname">
+                                4.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{pollavatarrank4}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{pollrank4}}
+                            </div>
+                            <div class="rankcoin" style="color: #6c6c6c;">{{polledrank4}} Polls</div>
+                        </div>
+
+                        <div class="rankedmore">
+                            <div class="rankname">5.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{pollavatarrank5}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{pollrank5}}
+                            </div>
+                            <div class="rankcoin"  style="color: #6c6c6c;">{{polledrank5}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">6.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{pollavatarrank6}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{pollrank6}}
+                            </div>
+                            <div class="rankcoin"  style="color: #6c6c6c;">{{polledrank6}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">7.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{pollavatarrank7}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{pollrank7}}
+                            </div>
+                            <div class="rankcoin"  style="color: #6c6c6c;">{{polledrank7}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">8.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{pollavatarrank8}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{pollrank8}}
+                            </div>
+                            <div class="rankcoin"  style="color: #6c6c6c;">{{polledrank8}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">9.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{pollavatarrank9}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>{{pollrank9}}
+                            </div>
+                            <div class="rankcoin"  style="color: #6c6c6c;">{{polledrank9}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">10.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{pollavatarrank10}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{pollrank10}}
+                            </div>
+                            <div class="rankcoin"  style="color: #6c6c6c;">{{polledrank10}} Polls</div>
+                        </div>
+
+                    </div>
+
+
+                    {{!-- <div id="rank">
+                        <div class="ranked">
+                            <h3 style="margin-top: 25%; font-size: 18px;">2.{{pollrank2}}</h3>
+                            <div class="rank2">{{polledrank2}} Polls</div>
+                        </div>
+                        <div class="ranked">
+                            <h3 style="font-size: 21px;">1.{{pollrank1}} <i class="ri-vip-crown-line"></i></h3>
+                            <div class="rank1">{{polledrank1}} Polls</div>
+                        </div>
+                        <div class="ranked">
+                            <h3 style="margin-top: 40%; font-size: 18px;">3.{{pollrank3}}</h3>
+                            <div class="rank3">{{polledrank3}} Polls</div>
+                        </div>
+                    </div>
+                    <div id="rankmore">
+                        <div class="rankedmore">
+                            <div class="rankname">4.{{pollrank4}}</div>
+                            <div class="rankcoin">{{polledrank4}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">5.{{pollrank5}}</div>
+                            <div class="rankcoin">{{polledrank5}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">6.{{pollrank6}}</div>
+                            <div class="rankcoin">{{polledrank6}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">7.{{pollrank7}}</div>
+                            <div class="rankcoin">{{polledrank7}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">8.{{pollrank8}}</div>
+                            <div class="rankcoin">{{polledrank8}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">9.{{pollrank9}}</div>
+                            <div class="rankcoin">{{polledrank9}} Polls</div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">10.{{pollrank10}}</div>
+                            <div class="rankcoin">{{polledrank10}} Polls</div>
+                        </div>
+
+
+                    </div> --}}
+
+                </div>
+                <div id="box2">
+                    <div id="name"
+
+                        style="text-align: center; font-size: 30px; border-bottom: 1px solid #bcacec; padding-top: 10px; background-image: linear-gradient(#9172EC, #bcacec) ; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
+                        {{!-- style="text-align: center; font-size: 30px; border-bottom: 1px solid #83bfff; padding-top: 10px; background-color: #83bfff; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" --}}
+                    >
+                        COIN
+                    </div>
+                    <div id="rank">
+                        <div class="ranked" style="position: relative; top: 25px;">
+                            <div class="avatarimg"><img src="/uploads/{{avatarrank2}}" alt="Profile Image"
+                                    style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid black ;  box-shadow: 0px 5px 10px rgb(156, 156, 156);">
+                            </div>
+
+
+                            <div class="ranknumber"
+                                style="display: flex; justify-content: center; align-items: center; position: relative; top: -20px;">
+                                <h3
+                                    style="background-color: #CE8946; border-radius: 50%; width: 25px; height: 25px; font-style: oblique; ">
+                                    2
+                                </h3>
+                            </div>
+
+                            <p style="font-weight: lighter; font-size: 22px; position: relative; top: -22px;">
+                                {{coinrank2}}</p>
+
+                            <h3 style="color: #6c6c6c; position: relative; top: -22px; font-size: 18px;">{{coinedrank2}}
+                                <i class="ri-coins-fill"></i>
+                            </h3>
+                        </div>
+                        <div class="ranked">
+                            <div class="avatarimg"><img src="/uploads/{{avatarrank1}}" alt="Profile Image"
+                                    style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid black ;  box-shadow: 0px 5px 10px rgb(99, 99, 99);">
+                            </div>
+
+
+                            <div class="ranknumber"
+                                style="display: flex; justify-content: center; align-items: center; position: relative; top: -20px;">
+                                <h3
+                                    style="background-color: gold; border-radius: 50%; width: 30px; height: 30px; font-style: oblique; ">
+                                    1
+                                </h3>
+                            </div>
+
+                            <p style="font-weight: lighter; font-size: 27px; position: relative; top: -22px;">
+                                {{coinrank1}}</p>
+
+                            <h3 style="color: #6c6c6c; position: relative; top: -22px;">{{coinedrank1}} <i
+                                    class="ri-coins-fill"></i></h3>
+                        </div>
+                        <div class="ranked" style="position: relative; top: 25px;">
+                            <div class="avatarimg"><img src="/uploads/{{avatarrank3}}" alt="Profile Image"
+                                    style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid black ;  box-shadow: 0px 5px 10px rgb(156, 156, 156);">
+                            </div>
+
+
+                            <div class="ranknumber"
+                                style="display: flex; justify-content: center; align-items: center; position: relative; top: -20px;">
+                                <h3
+                                    style="background-color: #BCC6CC ; border-radius: 50%; width: 25px; height: 25px; font-style: oblique; ">
+                                    3
+                                </h3>
+                            </div>
+
+                            <p style="font-weight: lighter; font-size: 22px; position: relative; top: -22px;">
+                                {{coinrank3}}</p>
+
+                            <h3 style="color: #6c6c6c; position: relative; top: -22px; font-size: 18px;">{{coinedrank3}}
+                                <i class="ri-coins-fill"></i>
+                            </h3>
+                        </div>
+                    </div>
+                    <div id="rankmore">
+
+                        <div class="rankedmore">
+                            <div class="rankname">
+                                4.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{avatarrank4}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{coinrank4}}
+                            </div>
+                            <div class="rankcoin" style="color: #6c6c6c;">{{coinedrank4}} <i class="ri-coins-fill"></i></div>
+                        </div>
+
+                        <div class="rankedmore">
+                            <div class="rankname">5.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{avatarrank5}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{coinrank5}}
+                            </div>
+                            <div class="rankcoin" style="color: #6c6c6c;">{{coinedrank5}} <i class="ri-coins-fill"></i></div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">6.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{avatarrank6}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{coinrank6}}
+                            </div>
+                            <div class="rankcoin" style="color: #6c6c6c;">{{coinedrank6}} <i class="ri-coins-fill"></i></div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">7.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{avatarrank7}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{coinrank7}}
+                            </div>
+                            <div class="rankcoin" style="color: #6c6c6c;">{{coinedrank7}} <i class="ri-coins-fill"></i></div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">8.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{avatarrank8}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{coinrank8}}
+                            </div>
+                            <div class="rankcoin" style="color: #6c6c6c;">{{coinedrank8}} <i class="ri-coins-fill"></i></div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">9.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{avatarrank9}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>{{coinrank9}}
+                            </div>
+                            <div class="rankcoin" style="color: #6c6c6c;">{{coinedrank9}} <i class="ri-coins-fill"></i></div>
+                        </div>
+                        <div class="rankedmore">
+                            <div class="rankname">10.
+                                <div class="rankname-avatar" style="padding-left: 5px ; padding-right: 5px;"><img
+                                        src="/uploads/{{avatarrank10}}" alt="Profile Image"
+                                        style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid black;">
+                                </div>
+                                {{coinrank10}}
+                            </div>
+                            <div class="rankcoin" style="color: #6c6c6c;">{{coinedrank10}} <i class="ri-coins-fill"></i></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div id="heading">
+                <p
+                    style="font-weight: 700; color: white; background-color: rgb(112, 117, 121); width: 65%; text-align: center; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 10px;">
+                    Discover the top 10 users leading the polls and earning the most coins on the leaderboard!</p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div id="pagelast">
+
+        <div class="powerbi-content">
+            <div class="content1">
+                <div class="picss"><img
+                        src="https://tse4.mm.bing.net/th?id=OIP.nPAhIyk2HMgioxmWaLAdhwHaHa&pid=Api&P=0&h=180"
+                        width="100%" height="100%"></div>
+                <div class="text-content">
+                    <h2 style="color: rgb(69, 69, 69); font-size: 22px;">Gather Opinions with Power BI</h2>
+                    <br>
+                    <p>Represent data based on people's opinions using Power BI to generate meaningful insights.
+                        Enable better decision-making by capturing real-time feedback from diverse sources.</p>
+                </div>
+            </div>
+
+            <div class="content2">
+                <div class="picss"><img src="https://cdn-icons-png.flaticon.com/512/84/84511.png" width="60%"
+                        height="70%" style="margin-top: 15px;"></div>
+                <div class="text-content">
+                    <h2 style="color: rgb(69, 69, 69); font-size: 22px;">Visualize Data with Power BI</h2>
+                    <br>
+                    <p>Create impactful data visualizations using Power BI to understand trends and make informed
+                        decisions.
+                        Transform raw data into compelling visual stories that drive business growth.</p>
+                </div>
+            </div>
+            <div class="content3">
+                <div class="picss"><img
+                        src="https://img.freepik.com/free-psd/isolated-arrow-pointing-direction_23-2151018538.jpg?ga=GA1.1.1272329634.1724952215"
+                        width="100%" height="100%" alt=""></div>
+                <div class="text-content">
+                    <h2 style="color: rgb(69, 69, 69); font-size: 22px;">Empower Small Businesses & Creators</h2>
+                    <br>
+                    <p>Use insights from Power BI to empower small businesses, digital creators, and customers by
+                        helping them leverage data.
+                        Equip businesses and creators with the tools to optimize operations and unlock new
+                        opportunities.</p>
+                </div>
+            </div>
+
+            <div class="content4">
+                <div class="picss"><img
+                        src="https://img.freepik.com/free-vector/sales-growth-commerce-analytics-profit-analysis-business-analyst-marketing-plan-marketologist-holding-clipboard-cartoon-character-vector-isolated-concept-metaphor-illustration_335657-2756.jpg?ga=GA1.1.1272329634.1724952215"
+                        alt="" width="110%" height="110%">
+
+                </div>
+                <div class="text-content">
+                    <h2 style="color: rgb(69, 69, 69); font-size: 22px;">Leverage Data for Success</h2>
+                    <br>
+                    <p>Harness the power of data through visualization and analysis to achieve success in various
+                        sectors.
+                        Turn data into actionable strategies that foster innovation and competitiveness.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="footer">
+            <div class="footer1">
+                <h2>Company</h2> <br>
+                About Us <br>
+                Culture
+            </div>
+            <div class="footer2">
+                <h2>Resources</h2> <br>
+                Help Centre <br>
+                Contact Support
+            </div>
+            <div class="footer3">
+                <h2>Careers</h2> <br>
+                Open Roles
+            </div>
+            <div class="footer4">
+                <h2>Contact Us</h2> <br>
+                vcet@edu.in <br>
+                communication@opiniontrade.in
+            </div>
+        </div>
+
+
+        <div class="socialicon">
+            <img style="margin-right: 20px; "
+                src="https://probo.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flinkedin.20fbb25d.webp&w=48&q=75"
+                alt="">Linkedin
+            <img style="margin-right: 20px; margin-left: 20px;"
+                src="https://probo.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fx.a8e345a2.webp&w=48&q=75"
+                alt="">Twitter
+            <img style="margin-right: 20px; margin-left: 20px;"
+                src="https://probo.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finstagram.71ea79d8.webp&w=48&q=75"
+                alt="">Instagram
+            <img style="margin-right: 20px; margin-left: 20px;"
+                src="https://probo.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fyoutube.313aec8b.webp&w=48&q=75"
+                alt="">Youtube
+        </div>
+    </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

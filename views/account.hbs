@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpinionTrade</title>
+    <link rel="icon" href="https://t4.ftcdn.net/jpg/05/97/06/33/360_F_597063320_zWzNOwBIEDbsUPUj0NAtilvkGVMdGTPz.jpg"
+         type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <script src="tabsbox.js" defer></script>
+    <style>
+        .section {
+            display: none;
+            width: 100%;
+            height: 90%;
+            margin-top: 30px;
+            margin-left: 30px;
+
+        }
+
+        .active {
+            display: block;
+
+        }
+
+        /* 
+    #profile{
+
+        display: grid;
+        
+        width: 100%;
+        height: 70%;
+        margin-top: 30px;
+        margin-left: 30px;
+    } */
+        .section_ {
+
+            font-size: 19px;
+            font-weight: lighter;
+            width: 800px;
+            height: 60px;
+            /* background: #b54f4f; */
+
+        }
+
+        .section_ input {
+            width: 200px;
+            height: 28px;
+            border: 0.5px solid rgb(197, 197, 197);
+            font-size: 17px;
+        }
+
+
+        .redeem {
+            /* background-color: rgb(221, 255, 255); */
+            background: transparent;
+            width: 96%;
+            height: 100%;
+            position: relative;
+            top: -4.5%;
+            display: block;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+
+        .redeem::-webkit-scrollbar {
+            display: none;
+        }
+
+        .aboutus_ {
+            background: transparent;
+            width: 96%;
+            height: 100%;
+            /* border: 0.5px solid rgb(202, 202, 202); */
+            display: block;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+
+        .aboutus_::-webkit-scrollbar {
+            display: none;
+        }
+
+        .coupon {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 8px;
+            overflow: hidden;
+
+
+        }
+
+        .coupon1 {
+            display: grid;
+            background-color: white;
+            justify-content: center;
+            padding-top: 15px;
+            /* background: #6bc732; */
+            width: 30%;
+            height: 90%;
+            box-shadow: 0px 10px 10px gainsboro;
+            border: 0.1px solid gainsboro;
+            border-radius: 13px;
+            overflow: hidden;
+
+        }
+
+        .coupon2 {
+            display: grid;
+            background-color: white;
+            justify-content: center;
+            padding-top: 15px;
+
+            width: 30%;
+            height: 90%;
+            box-shadow: 0px 10px 10px gainsboro;
+            border: 0.1px solid gainsboro;
+            border-radius: 13px;
+            overflow: hidden;
+        }
+
+        .coupon3 {
+            display: grid;
+            background-color: white;
+            justify-content: center;
+            padding-top: 15px;
+            overflow: hidden;
+            width: 30%;
+            height: 90%;
+            box-shadow: 0px 10px 10px gainsboro;
+            border: 0.1px solid gainsboro;
+            border-radius: 13px;
+
+        }
+
+        .coupon4 {
+            display: grid;
+            background-color: white;
+            justify-content: center;
+            padding-top: 15px;
+            overflow: hidden;
+            width: 30%;
+            height: 90%;
+            box-shadow: 0px 10px 10px gainsboro;
+            border: 0.1px solid gainsboro;
+            border-radius: 13px;
+
+        }
+
+        .coupon5 {
+            display: grid;
+            background-color: white;
+            justify-content: center;
+            padding-top: 15px;
+            overflow: hidden;
+            width: 30%;
+            height: 90%;
+            box-shadow: 0px 10px 10px gainsboro;
+            border: 0.1px solid gainsboro;
+            border-radius: 13px;
+
+        }
+
+        .coupon6 {
+            display: grid;
+            background-color: white;
+            justify-content: center;
+            padding-top: 15px;
+            overflow: hidden;
+            width: 30%;
+            height: 90%;
+            box-shadow: 0px 10px 10px gainsboro;
+            border: 0.1px solid gainsboro;
+            border-radius: 13px;
+
+        }
+
+        .showcoupon {
+            background: white;
+            width: 200px;
+            height: 50px;
+            border: 0.5px solid rgb(153, 153, 153);
+            border-radius: 17px;
+            text-align: center;
+            margin-top: 20%;
+            /* overflow: hidden; */
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-weight: lighter;
+            /* background-color: #007BFF; */
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            text-align: center;
+            /* border-radius: 5px; */
+            display: inline-block;
+        }
+
+        .hidden-text {
+            /* margin-top: 20px; */
+            transform: translateY(-79.5%);
+            color: red;
+            font-size: larger;
+            padding: 10px;
+            width: 200px;
+            height: 50px;
+            border: 3.5px dashed rgb(255, 50, 50);
+            border-radius: 17px;
+            background-color: white;
+            z-index: 1;
+            /* background-color: #f8f9fa; 
+            border: 1px solid #ddd;  */
+            /* border-radius: 5px; */
+            display: none;
+            /* Hide text by default */
+        }
+
+        .used-message {
+            /* margin-top: 20px; */
+
+
+            color: red;
+            font-size: larger;
+            padding: 10px;
+            width: 200px;
+            height: 50px;
+            border: 3.5px dashed rgb(255, 50, 50);
+            border-radius: 17px;
+            background-color: white;
+            z-index: 1;
+            /* background-color: #f8f9fa; 
+            border: 1px solid #ddd;  */
+            /* border-radius: 5px; */
+
+            /* Hide text by default */
+        }
+
+        .refeeral_ {
+            width: 96%;
+            height: 100%;
+            /* background-color: blueviolet; */
+        }
+
+        .r1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* background: #e48f8f; */
+            width: 96%;
+            height: 250px;
+        }
+
+        .rtext {
+            font-size: 60px;
+            font-style: italic;
+            margin-left: 20px;
+        }
+
+        .r2 {
+            margin-top: 50px;
+            width: 96%;
+            height: 42%;
+            background-color: #1d1d1d;
+            border-radius: 50px;
+            text-align: center;
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+            color: white;
+            font-size: 35px;
+            font-weight: lighter;
+
+        }
+
+        .r2-code {
+
+            font-family: serif;
+            padding-bottom: 20px;
+
+
+        }
+
+
+
+
+        .notification {
+            position: fixed;
+            margin-top: 30px;
+            right: 20px;
+
+            background-color: #4caf50;
+
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .notification.error {
+            background-color: #f44336;
+
+        }
+
+        .notification.hidden {
+            display: none;
+        }
+
+        .close-btn {
+            margin-left: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+
+
+        <div id="header">
+            <div id="header1">
+
+                <div id="logo"><img
+                        src="https://t4.ftcdn.net/jpg/05/97/06/33/360_F_597063320_zWzNOwBIEDbsUPUj0NAtilvkGVMdGTPz.jpg"
+                        width="100%" height="100%" style="object-fit: cover;"></div>
+
+
+                <div class="texts">
+                    <p>Account</p>
+                </div>
+                <div class="texts">
+                    <a href="https://vcet.edu.in/">
+                        <p style="color: rgb(41, 41, 41); ">VCET</p>
+                    </a>
+                </div>
+                <div class="texts">
+                    <a href="/allevent">
+                        <p style="color: rgb(45, 45, 45);">Poll</p>
+                    </a>
+                </div>
+                <div class="texts">
+                    <a href="/customer">
+                        <p style="color: rgb(45, 45, 45);">Customers</p>
+                    </a>
+                </div>
+
+                <div class="texts">
+                    <a href="/leaderboard">
+                        <p
+                            style="display: flex ; align-items: center; justify-content: center; color: rgb(45, 45, 45);">
+                            Leaderboard <img src="https://cdn-icons-png.flaticon.com/128/7799/7799179.png"
+                                style=" width: 27px; padding-left: 5px; "></p>
+                    </a>
+                </div>
+                <div id="contactde">
+                    <p style=text-align:center;><u>Contact Us</u> </p>
+                    <p>9988-00-6677</p>
+                </div>
+            </div>
+            <div id="header2">
+                <div class="icon"><i class="ri-search-line"> </i></div>
+                <div class="icon"><i class="ri-global-line"> </i></div>
+                <div id="login">
+                    <form action="{{baseUrl}}/logout" method="POST">
+                        <button type="submit"
+                            style="border-radius: 55px; padding: 10px; color: white; background: #000; width: 80px; cursor: pointer; ">
+                            <i class="ri-user-3-fill"></i>Logout</button>
+
+                    </form>
+                    {{!-- <a href="/login_signup">
+                        <p>Login</p>
+                    </a> --}}
+                </div>
+                <div id="try">
+
+                    <a href="/index">
+                        <p>OpinionTrade</p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="fakeheader"></div>
+        <div id="page1" style="">
+            <div id="strip">
+                {{!-- <div class="cat">
+                    <a href="/allevent">
+                        <p>All Event</p>
+                    </a>
+                </div>
+                <div class="cat">
+                    <a href="/cricket">
+                        <p>Cricket</p>
+                    </a>
+                </div>
+                <div class="cat">
+                    <a href="/news">
+                        <p>News</p>
+                    </a>
+                </div>
+                <div class="cat">
+                    <p>Entertainment</p>
+                </div>
+                <div class="cat">
+                    <a href="/economy">
+                        <p>Economy</p>
+                    </a>
+                </div>
+                <div class="cat">
+                    <p>Elections</p>
+                </div> --}}
+
+                <div class="wrapper">
+                    <div class="icons"><i id="left" class="ri-arrow-left-wide-line"></i></div>
+                    <ul class="tabs-box">
+                        <li class="tab"><a href="/allevent">Allevent</a></li>
+                        <li class="tab"><a href="/cricket">Cricket</a></li>
+                        <li class="tab"><a href="/tech">Technology</a></li>
+                        <li class="tab"><a href="/sustain">Sustainability</a></li>
+                        <li class="tab"><a href="/health">Health & Wellness</a></li>
+                        <li class="tab"><a href="/education">Education</a></li>
+                        <li class="tab"><a href="/entertainment">Entertainment</a></li>
+                        <li class="tab"><a href="/sports">Sports</a></li>
+                        <li class="tab"><a href="/consumer">Consumer Preferences</a></li>
+                        <li class="tab"><a href="/gadgets">Gadgets</a></li>
+                        <li class="tab"><a href="/tour">Tour & Travel</a></li>
+                        <li class="tab"><a href="/economy">Finance & Economy</a></li>
+                        <li class="tab"><a href="/sharemarket">Share Market</a></li>
+                        <li class="tab"><a href="/gaming">Gaming & Esports</a></li>
+                        <li class="tab"><a href="/food">Food & Beverages</a></li>
+                    </ul>
+                    <div class="icons"><i id="right" class="ri-arrow-right-wide-fill"></i></div>
+                </div>
+            </div>
+
+            <div id="page1-account">
+
+
+                <div class="account-section">
+                    <div class="as1">
+
+
+
+                        <div class="acc-logo" style="font-size: x-large;">
+                            {{#if avatar}}
+                            <img src="/uploads/{{userProfile.profileImage}}" alt="Profile Image"
+                                style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; box-shadow: 0px 5px 10px rgb(163, 163, 163); ">
+                            <br>{{username}}
+                            {{else}}
+                            <h1><i class="ri-account-circle-fill"></i></h1> {{username}}
+                            {{/if}}
+                        </div>
+                        <div class="acc-coin">
+                            <h2><i class="ri-coins-fill"></i>{{userProfile.coin}}</h2>
+                        </div>
+                        {{#if profileError}}
+                        <div class="alert alert-danger"
+                            style="color: red; border: 1px solid red; padding: 7px 7px 7px 7px ; box-shadow: 1px 1px  10px rgb(255, 63, 63);">
+                            {{profileError}}</div>
+                        {{/if}}
+
+                    </div>
+                    <div class="as2">
+                        <a href="#" style="color: black;">
+                            <div class="as2_" onclick="showSection('profile')">Profile</div>
+                        </a>
+                        <a href="#" style="color: black;">
+                            <div class="as2_" onclick="showSection('redeem')">Redeem</div>
+                        </a>
+                        <a href="#" style="color: black;">
+                            <div class="as2_" onclick="showSection('refeeral')">Referral</div>
+                        </a>
+                        <a href="#" style="color: black;">
+                            <div class="as2_" onclick="showSection('aboutus')">About us</div>
+                        </a>
+                        <a href="#" style="color: black;">
+                            <div class="as2_" onclick="showSection('contactus')">Contact us</div>
+                        </a>
+                        <a href="/login_signup" style="color: black;">
+                            <div class="as2_" onclick="">log out</div>
+                        </a>
+
+                    </div>
+
+                </div>
+                <div class="account-display">
+
+                    <div id="notification" class="notification hidden">
+                        <span id="notification-message"></span>
+                        <button id="notification-close" class="close-btn">&times;</button>
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const notificationElement = document.getElementById('notification');
+                            const messageElement = document.getElementById('notification-message');
+                            const closeBtn = document.getElementById('notification-close');
+
+                            // Flash message from server-side rendered into the template
+                            const successMessage = "{{successMessages}}";
+                            const errorMessage = "{{errorMessages}}";
+
+                            console.log(successMessage, errorMessage);  // Check if messages are being received
+
+                            // Show notification if flash message exists
+                            if (successMessage && successMessage.trim() !== '') {
+                                messageElement.textContent = successMessage;
+                                notificationElement.classList.remove('hidden');
+                            } else if (errorMessage && errorMessage.trim() !== '') {
+                                messageElement.textContent = errorMessage;
+                                notificationElement.classList.remove('hidden');
+                                notificationElement.classList.add('error');
+                            }
+
+                            // Close notification when close button is clicked
+                            closeBtn.addEventListener('click', function () {
+                                notificationElement.classList.add('hidden');
+                            });
+
+                            // Optionally, auto-hide the notification after a few seconds
+                            setTimeout(() => {
+                                notificationElement.classList.add('hidden');
+                            }, 6000); // Hide after 5 seconds
+                        });
+                    </script>
+
+                    <div id="profile" class="section">
+
+                        {{#if hasProfile}}
+                        <h2 style="margin: 30px 0px 30px 35px;">Your Profile Details:</h2>
+                        <p style="margin: 30px 0px 20px 50px; font-size: 20px;"><strong>First Name:</strong>
+                            {{userProfile.first_name}}</p>
+                        <p style="margin: 30px 0px 20px 50px; font-size: 20px;"><strong>Last Name:</strong>
+                            {{userProfile.last_name}}</p>
+                        <p style="margin: 30px 0px 20px 50px; font-size: 20px;"><strong>Phone Number:</strong>
+                            {{userProfile.phone_number}}</p>
+                        <p style="margin: 30px 0px 20px 50px; font-size: 20px;"><strong>Email:</strong>
+                            {{userProfile.email}}</p>
+                        <p style="margin: 30px 0px 20px 50px; font-size: 20px;"><strong>Gender:</strong>
+                            {{userProfile.gender}}</p>
+                        <p style="margin: 30px 0px 20px 50px; font-size: 20px;"><strong>Age:</strong>
+                            {{userProfile.age}}</p>
+
+
+
+                        <form action="/uploadProfileImage" method="POST" enctype="multipart/form-data">
+                            {{!-- <label for="profileImage">Upload Profile Image</label> --}}
+                            <p style="margin: 30px 0px 20px 50px; font-size: 20px;"><strong>Upload Avatar:</strong>
+                                <input type="file" name="profileImage" id="profileImage" accept="image/*" required>
+                                <br><br>
+                                <button type="submit"
+                                    style="width: 90px; height: 35px; font-size: 17px; border-radius: 20px; color: white; background-color: #1d1d1d; cursor: pointer;">Upload</button>
+
+
+                                {{!-- {{#if user.profileImage}} --}}
+
+
+
+
+                                {{!-- {{/if}} --}}
+                        </form>
+
+
+                        {{else}}
+
+                        <form action="/userProfile" method="post">
+
+
+                            <div class="section_"><label for="first_name">First Name:</label>
+                                <input type="text" id="first_name" name="first_name" required>
+                            </div>
+                            <br>
+
+                            <div class="section_"><label for="last_name">Last Name:</label>
+                                <input type="text" id="last_name" name="last_name" required>
+                            </div>
+                            <br>
+
+                            <div class="section_"><label for="phone_number">Phone Number:</label>
+                                <input type="tel" id="phone_number" name="phone_number" pattern="[0-9]{10}"
+                                    placeholder="" required>
+                            </div>
+                            <br>
+
+                            <div class="section_"><label for="email">Email Address:</label>
+                                <input type="email" id="email" name="email" placeholder="" required>
+                            </div>
+                            <br>
+
+                            <div class="section_"><label for="gender">Gender:</label>
+                                <label for="gender"><input style="width: 15px; height: 15px; margin-right: 10px;"
+                                        type="radio" name="gender" id="gender" value="male">male</label>
+                                <label for="gender"><input style="width: 15px; height: 15px; margin-right: 10px;"
+                                        type="radio" name="gender" id="gender" value="female">female</label>
+                                <label for="gender"><input style="width: 15px; height: 15px; margin-right: 10px;"
+                                        type="radio" name="gender" id="gender" value="other">other</label>
+                            </div>
+                            <!-- <select id="gender" name="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            </select> -->
+
+                            <br>
+
+                            <div class="section_"><label for="age">Age:</label>
+                                <input style="width: 65px; height: 25px;" type="number" id="age" name="age" min="1"
+                                    max="120" required>
+                            </div>
+                            <br>
+
+                            <div class="section_"><input
+                                    style="width: 100px; border-radius: 8px; border: 1px solid rgb(70, 70, 70); font-size: 19px; margin-left: 110px; height: 37px;"
+                                    type="submit" value="Submit">
+                            </div>
+
+                        </form>
+                        {{/if}}
+
+                    </div>
+                    <div id="redeem" class="section">
+
+
+                        <div class="redeem">
+
+                            <div class="coupon">
+                                <div class="coupon1">
+                                    <a href="https://pizzaonline.dominos.co.in/?src=affiliate_admitad_335261_CU01dd0972b4cc02&utm_source=affiliate&utm_medium=admitad&utm_campaign=335261_CU01dd0972b4cc02&admitad_uid=36353fd36bfa91eefa195d6ef405b006"
+                                        target="_blank">
+                                        <img src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/4735ce608c5c4fc1f9b83267d8fb1a8c/dominos-logo-small.jpg?892278"
+                                            alt="">
+                                    </a>
+
+                                    <br>
+                                    <h3>40% Off on ₹200</h3>
+                                    <div class="showcoupon">
+                                        {{!-- {{#if (contains usedCoupons "CART80")}} --}}
+                                        {{#if couponStatus.CART80}}
+                                        <div class="used-message">CART80</div>
+                                        {{else}}
+
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">CART80</div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="coupon1"><a
+                                        href="https://www.dellstore.com/deals/customize-n-buy.html?cjdata=MXxOfDB8WXww&cjevent=2e274cbe704011ef83ec04090a18b8f8&dgc=CJ&publisherid=3778723&publisher=&aff=BENNETT%2C+COLEMAN+AND+COMPANY+LIMITED&affid=3778723&aff_webid=6012537&aff_user_id=CUa685f859da56d5&gacd=9684407-24588202-5750457-281412389-137314828&dgc=af&VEN=14327330-6012537-CUa685f859da56d5&dclid=CLmp7Pv8uogDFdNDnQkd_WsGJg"
+                                        target="_blank">
+                                        <img src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/155833769bef32847a8e51f386f91934/dell-logo-small.jpg?77633"
+                                            alt="">
+                                    </a>
+
+                                    <br>
+                                    <h3>Flat 5% Off On Order</h3>
+                                    <div class="showcoupon">
+                                        {{!-- {{#if (contains usedCoupons "6FS$ZKM5CW9S8L")}} --}}
+                                        {{#if couponStatus.6FS$ZKM5CW9S8L}}
+                                        <div class="used-message">6FS$ZKM5CW9S8L</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">6FS$ZKM5CW9S8L</div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="coupon1">
+                                    <a href="https://www.myntra.com/?utm_source=admitad&utm_medium=affiliate&utm_campaign=335261_b14a96d4cd1653528a81af42c6f934b4&admitad_uid=b14a96d4cd1653528a81af42c6f934b4&tagtag_uid=b14a96d4cd1653528a81af42c6f934b4"
+                                        target="_blank">
+                                        <img src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/4763d1d29415df742a808c52e765a098/myntra-logo-small.jpg?624170"
+                                            alt="">
+                                    </a>
+
+                                    <br>
+                                    <h3>₹300 Off On ₹750</h3>
+                                    <div class="showcoupon">
+                                        {{!-- {{#if (contains usedCoupons "WESTERNSTYLE")}} --}}
+                                        {{#if couponStatus.WESTERNSTYLE}}
+                                        <div class="used-message">WESTERNSTYLE</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">WESTERNSTYLE</div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="coupon">
+                                <div class="coupon2">
+                                    <a href="https://www.zomato.com/" target="_blank">
+                                        <img src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/25a809e6118ffb653ba5245e45847011/zomato-logo-small.png?618935"
+                                            alt="">
+                                    </a>
+
+                                    <br>
+                                    <h3>
+                                        60% Off On Order</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.TRYNEW}}
+                                        <div class="used-message">TRYNEW</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">TRYNEW</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                                <div class="coupon2">
+                                    <a href="https://www.swiggy.com" target="_blank">
+                                        <img src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/f6fd7521cba029e92f8f3b34aa45179c/swiggy-logo-small.jpg?425739"
+                                            alt="">
+                                    </a>
+
+                                    <br>
+                                    <h3>60% Off On Food Orders</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.FIRSTTRY}}
+                                        <div class="used-message">FIRSTTRY</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">FIRSTTRY</div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="coupon2">
+                                    <a href="https://www.amazon.in/b/ref=s9_acss_bw_cg_INACSBC_12a1_w?node=15933105031&pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-4&pf_rd_r=JZFYF164H0RAS64VKWJF&pf_rd_t=101&pf_rd_p=aec0a84f-112a-46d7-980e-585da76d75d8&pf_rd_i=14591097031&tag=coupo07-21&ascsubtag=CU38d4b2eb2e89a0"
+                                        target="_blank">
+                                        <img src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/e3f0cb0aec65ed22f674fd634650db38/amazon-logo-small.jpg?152730"
+                                            alt="">
+                                    </a>
+
+                                    <br>
+                                    <h3>60% Off on Electronics</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.Activated}}
+                                        <div class="used-message">Activated</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">Activated</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="coupon">
+                                <div class="coupon3">
+                                    <a href="https://www.nykaa.com/sp/new-customers/new-customers?utm_medium=affiliates&utm_source=admitad&utm_campaign=335261_CU6a9694c4757c3f&tagtag_uid=be9bf81a6e30995366b8eef67083b2f7"
+                                        target="_blank"> <img
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/23998f55b9f1afd8abb9ae29e2a111e7/nykaa-logo-small.jpg?470418"
+                                            alt=""></a>
+
+
+
+                                    <br>
+                                    <h3>₹400 Off On ₹1800</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.EXTRA400A}}
+                                        <div class="used-message">EXTRA400A</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">EXTRA400A</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                                <div class="coupon3">
+                                    <a href="https://www.goibibo.com/offers/super-flight-sale/?utm_source=Admitad&utm_medium=DisplayAffiliate&utm_campaign=hotels_335261_CUae0332bb160249_ec0e29be8cc37c3de9e270824d968318&admitad_uid=ec0e29be8cc37c3de9e270824d968318"
+                                        target="_blank"><img
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/13465ee0015e829084fde30c7e17533c/goibibo-logo-small.jpg?796406"
+                                            alt=""></a>
+
+                                    <br>
+                                    <h3>₹2000 Off On Flights</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.GISUPER}}
+                                        <div class="used-message">GISUPER</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">GISUPER</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                                <div class="coupon3">
+                                    <a href="https://xyxxcrew.com/" target="_blank"> <img
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/7dfa0aaca55bfa7e3ba5a8f9daaf763f/xyxx-apparels-coupons-logo-small.png?695493"
+                                            alt=""></a>
+
+                                    <br>
+                                    <h3>10% Off on First Order</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.WELCOME10}}
+                                        <div class="used-message">WELCOME10</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">WELCOME10</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="coupon">
+                                <div class="coupon4">
+                                    <a href="https://www.cleartrip.com/flights?dxid=0d6cd86e-da27-1697612594&utm_source=admitad&utm_medium=affiliate&utm_campaign=domflights_affiliate_in&utm_term=335261_2dcc406c5864ac637c6e584410822be4&xtm_term=2dcc406c5864ac637c6e584410822be4"
+                                        target="_blank"><img
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/5172ef198b1eb8bd9fbfa3d1afc37844/cleartrip-logo-small.png?490144"
+                                            alt=""></a>
+
+                                    <br>
+                                    <h3>25% Off On Dom Flights</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.CTADMITAD25}}
+                                        <div class="used-message">CTADMITAD25</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">CTADMITAD25</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                                <div class="coupon4">
+                                    <a href="https://www.firstcry.com/?ref=cpndn_self&utm_source=cpndn&utm_medium=aff&utm_content=cpndn"
+                                        target="_blank"><img
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/94baf657e1d12b5b36a4af8ae6c5f574/firstcry-logo-small.png?385555"
+                                            alt=""></a>
+
+                                    <br>
+                                    <h3>50% Off On Kids Fashion</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.ARIAS}}
+                                        <div class="used-message">ARIAS</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">ARIAS</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                                <div class="coupon4">
+                                    <a href="https://www.ajio.com/?utm_source=Admitad&utm_medium=affiliate&utm_campaign=335261_CUac01a4530251d8&clickid=66e19cec3e28390001ba00a4&pid=11&offer_id=2&attribution_window=1D&return_cancellation_window=45D"
+                                        target="_blank"><img
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/9ffe4a7a7970e2d853ea7f9dbce75627/ajio-logo-small.jpg?294922"
+                                            alt=""></a>
+
+                                    <br>
+                                    <h3>₹110 Off On ₹699</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.ADMAJIO2105}}
+                                        <div class="used-message">ADMAJIO2105</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">ADMAJIO2105</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="coupon">
+                                <div class="coupon5">
+                                    <a href="https://www.ajio.com/?utm_source=Admitad&utm_medium=affiliate&utm_campaign=335261_CUac01a4530251d8&clickid=66e19cec3e28390001ba00a4&pid=11&offer_id=2&attribution_window=1D&return_cancellation_window=45D"
+                                        target="_blank"><img
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/9ffe4a7a7970e2d853ea7f9dbce75627/ajio-logo-small.jpg?294922"
+                                            alt=""></a>
+
+                                    <br>
+                                    <h3>₹210 Off On ₹1199</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.ADMAJIO210}}
+                                        <div class="used-message">ADMAJIO210</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">ADMAJIO210</div>
+                                        {{/if}}
+
+
+                                    </div>
+                                </div>
+                                <div class="coupon5">
+                                    <a href="https://maxprotein.in/?utm_source=Mobligent&utm_medium=CPC&utm_campaign=MobligentWebSalesApril2024&utm_term=ProteinBar&utm_content=StaticAdKAProtainBar_66e19d6e9398b400019f3fd1_839_1062_"
+                                        target="_blank"><img
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/f31c3a051e3c0fa028de3b01cd61587e/maxprotein-coupons-logo-small.jpg?260250"
+                                            alt=""></a>
+
+                                    <br>
+                                    <h3>₹300 Off On ₹1500</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.FLAT300}}
+                                        <div class="used-message">FLAT300</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">FLAT300</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                                <div class="coupon5">
+                                    <a href="https://www.flipkart.com/laptops-store?otracker=nmenu_sub_Electronics_0_Laptops"
+                                        target="_blank"><img
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/4022b70285e468ff98d01073c52038b8/flipkart-logo-small.jpg?126153"
+                                            alt=""></a>
+
+                                    <br>
+                                    <h3>45% Off On Laptops</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.BACKTOCOLLEGE}}
+                                        <div class="used-message">BACKTOCOLLEGE</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">BACKTOCOLLEGE</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="coupon">
+                                <div class="coupon6">
+                                    <a href="https://mamaearth.in/?utm_source=Vcommission&utm_medium=affise_affiliate&utm_campaign=Sept23&utm_term=cps_107_102437_CU986de2061390fe_66e19e50b4c77c0345599800&pid=107&sub2=102437_CU986de2061390fe&sub1=66e19e50b4c77c0345599800&path=&sub1=66e19e50b4c77c0345599800&sub2=102437_CU986de2061390fe"
+                                        target="_blank"> <img
+                                            src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/c27815f424a96eba3f7b968ac16523bf/mamaearth-logo-small.png?632302"
+                                            alt=""></a>
+
+                                    <br>
+                                    <h3>15% Off On Facewash</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.OF20}}
+                                        <div class="used-message">OF20</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">OF20</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                                <div class="coupon6">
+                                    <a href="https://www.hostinger.in/?utm_medium=affiliate&utm_source=aff68930&utm_campaign=538&session=102b34eec4fe82e94e37a4b8c73bef"
+                                        target="_blank">
+                                        <img src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/40d165638a27d7c4b816120edfa7cb42/hostinger-logo-small.png?811092"
+                                            alt="">
+                                    </a>
+
+                                    <br>
+                                    <h3>get free domain</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.FREEDOMAIN}}
+                                        <div class="used-message">FREEDOMAIN</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">FREEDOMAIN</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                                <div class="coupon6">
+                                    <a href="https://www.goibibo.com/offers/super-flight-sale/?utm_source=Admitad&utm_medium=DisplayAffiliate&utm_campaign=hotels_335261_CUae0332bb160249_ec0e29be8cc37c3de9e270824d968318&admitad_uid=ec0e29be8cc37c3de9e270824d968318"
+                                        target="_blank">
+                                        <img src="https://d3pzq99hz695o4.cloudfront.net/sitespecific/in/stores/web/13465ee0015e829084fde30c7e17533c/goibibo-logo-small.jpg?631322"
+                                            alt="">
+                                    </a>
+
+                                    <br>
+                                    <h3>8% Off Dom Flights</h3>
+                                    <div class="showcoupon">
+                                        {{#if couponStatus.GOYESEMI}}
+                                        <div class="used-message">GOYESEMI</div>
+                                        {{else}}
+                                        <div class="button">
+                                            <h3>show coupon</h3>
+                                        </div>
+                                        <div class="hidden-text">GOYESEMI</div>
+                                        {{/if}}
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div id="refeeral" class="section">
+                        <div class="refeeral_">
+                            <div class="r1">
+                                <div class="rtext"><u>Refer</u> <br> <u>a friend </u>
+                                    <br>
+                                    <h6
+                                        style="font-size: 30px; font-style: normal;font-weight: lighter ;background: #000; color: white; text-align: center; margin-top: 15px; border-radius: 12px;">
+                                        {{referCode}}</h6>
+                                </div>
+
+                                <div class="rimg">
+                                    <!-- <img style="mix-blend-mode: multiply;" src="https://img.freepik.com/free-vector/customers-earning-money-by-giving-likes_74855-7121.jpg?t=st=1725588070~exp=1725591670~hmac=41832cb2a8c08b7e59d270a177404b4b2c13b09a716c07cc2d0585567fbe2fcb&w=550" alt=""> -->
+                                    <img style="height: 300px; width: 550px; margin-top: 55px; padding-left: 90px;"
+                                        src="https://probo.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fheader-2.57150a99.png&w=1080&q=75"
+                                        alt="">
+                                </div>
+                            </div>
+
+                            <div class="r2">
+                                <div class="r2-text-code"
+                                    style="font-size: 24px; padding-top: 15px; font-weight: lighter;">Referral code from
+                                    a friend goes here (Go on, ask them!)<br>👇🏻</div>
+                                <div class="r2-code">
+                                    <form action="/refer" method="post">
+                                        <input type="referralcode" name="referralBy"
+                                            style="font-size: 23px; text-align: center; font-family: 'Courier New', Courier, 'Courier New', Courier, monospace; border-radius: 13px; border: 2px solid rgb(255, 255, 255);"
+                                            placeholder="Enter code">
+
+                                    </form>
+                                </div>
+                                Earn 15 coins instantly with every referral <br> your ultimate reward
+                                awaits!!!
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div id="aboutus" class="section">
+                        <div class="aboutus_">
+                            <h1 style="font-weight: lighter;">About Us</h1> <br><br>
+                            <p style="font-family: serif; font-size: large ;"> Welcome to OpinionTrade, a platform
+                                designed to make your voice count! <br> We believe that every opinion matters and has
+                                the power to shape the Our mission is simple: connect people and organizations
+                                <br>through meaningful insights and provide a space where users can share their
+                                thoughts, ideas, and feedback on a variety of topics.
+                                <br><br><br>
+
+                                At OpinionTrade, we create engaging polls across a wide range of subjects, from the
+                                latest trends in technology and business to <br>social issues, lifestyle, and more. For
+                                every opinion you share, you'll earn exciting rewards—because we know that your time
+                                <br> and thoughts are valuable.
+                            </p><br><br>
+                            <h3 style="font-weight: lighter;">What we do? </h3> <br><br>
+                            <p style="font-family: serif; font-size: large;">
+                                Opinion Polls: <br>
+                                We curate diverse and relevant polls that allow users to express their views on topics
+                                that shape the world around us. <br><br>
+                                Data Insights: <br>Your opinions generate valuable insights, which we analyze and
+                                transform into meaningful data using advanced tools like Power BI. <br>These insights
+                                help businesses, researchers, and organizations make informed decisions. <br><br>
+                                Rewards System: <br> As a token of appreciation for participating in our polls, we offer
+                                a reward system that allows you to earn points and redeem them for gifts, vouchers, or
+                                donations to causes you care about.
+                                <br><br>
+
+                                Our Vision <br>
+                                We envision a world where everyone’s opinion is valued. We aim to bridge the gap between
+                                people and companies by providing a platform <br>where user-generated insights help
+                                shape products, services, and policies that benefit all. <br><br><br>
+
+                            </p>
+                            <h3 style="font-weight: lighter;">Why Choose Us?</h3> <br><br>
+                            <p style="font-family: serif; font-size: large;">
+                                Your Voice, Your Impact: <br>By sharing your opinions, you contribute to important
+                                conversations and drive change in industries and communities. <br><br>
+                                Transparency & Trust: <br> We prioritize data privacy and ensure that all data is
+                                handled with the utmost care and transparency. <br> <br>
+                                Incentives for Participation: <br>Unlike traditional surveys, we make your participation
+                                fun and rewarding. <br> <br> <br>
+                            </p>
+                            <h3 style="font-weight: lighter;"> Join us at OpinionTrade and start making an impact with
+                                your opinions. Together, we can shape a better future, <br> one poll at a time. </h3>
+                        </div>
+                    </div>
+                    <div id="contactus" class="section">
+
+
+                        <div id="cont-head">
+                            <h2 style="font-size: 35px; font-family: monospace; ">How can we help?</h2>
+                            <p style="color: #424242; font-size: 22px;">send us a message!</p>
+
+                        </div>
+
+                        <div id="cont-container">
+                            <div id="cont-msg">
+                                <form action="/contactus" method="post" style="width: 100%;">
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="first-name">First Name<span class="required" style="    font-size: 14px;
+                                                font-weight: bold;
+                                                display: block;
+                                                margin-bottom: 8px;"></span></label>
+                                            <input type="text" id="first-name" name="first_name" required
+                                                style="height: 30px; width: 90%; border: 1px soild gainsboro;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="last-name">Last Name<span class="required" style="    font-size: 14px;
+                                                font-weight: bold;
+                                                display: block;
+                                                margin-bottom: 8px;"></span></label>
+                                            <input type="text" id="last-name" name="last_name" required
+                                                style="height: 30px; width: 90%; border: 1px soild gainsboro;">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="email">Email (privacy policy)<span class="required" style="    font-size: 14px;
+                                            font-weight: bold;
+                                            display: block;
+                                            margin-bottom: 8px;"></span></label>
+                                        <input type="email" id="email" name="email" required
+                                            style="height: 30px; width: 200%; border: 1px soild gainsboro;">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="message">Message<span class="required" style="    font-size: 14px;
+                                            font-weight: bold;
+                                            display: block;
+                                            margin-bottom: 8px;"></span></label>
+                                        <textarea id="message" name="message" rows="4" required
+                                            placeholder="I'm interested in learning more about..."
+                                            style="width: 200%; height: 150px; border: 1px soild gainsboro;"></textarea>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <button type="submit" style="    width: 200%;
+                                        padding: 10px;
+                                        height: 40px;
+                                        font-stretch: extra-expanded;
+                                        background-color: #000000;
+                                        color: white;
+                                        border: none;
+                                        border-radius: 10px;
+                                        cursor: pointer;
+                                        font-size: 20px;">Send</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div id="cont-map">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.6599914219482!2d72.82615867498555!3d19.38386958188516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7aec0a4b41bef%3A0xbd1a4ca919d6a613!2sVidyavardhini&#39;s%20College%20of%20Engineering%20and%20Technology!5e0!3m2!1sen!2sin!4v1725856311063!5m2!1sen!2sin"
+                                    width="400" height="500" style="border:1px solid gainsboro; border-radius: 20px;"
+                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <script>
+            function showSection(sectionId) {
+                // Hide all sections
+                const sections = document.querySelectorAll('.section');
+                sections.forEach(section => section.classList.remove('active'));
+
+
+                // Show the selected section
+                const sectionToShow = document.getElementById(sectionId);
+                if (sectionToShow) {
+                    sectionToShow.classList.add('active');
+                }
+            }
+
+            // Optionally, you can show a default section on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                showSection('profile'); // Default to showing the profile section
+            });
+
+
+            /*document.addEventListener('DOMContentLoaded', () => {
+                const buttons = document.getElementsByClassName('button');
+                const hiddenTexts = document.getElementsByClassName('hidden-text');
+
+                // Ensure buttons and hiddenTexts are paired correctly
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].addEventListener('click', () => {
+                        const currentHiddenText = hiddenTexts[i];
+
+                        if (currentHiddenText.style.display === 'none' || currentHiddenText.style.display === '') {
+                            currentHiddenText.style.display = 'block'; // Show the text
+                            buttons[i].textContent = 'Click to Hide Text'; // Change button text
+                        } else {
+                            currentHiddenText.style.display = 'none'; // Hide the text
+                            buttons[i].textContent = 'Click to Reveal Text'; // Change button text back
+                        }
+                    });
+                }
+            });*/
+            /*
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const buttons = document.getElementsByClassName('button');
+                            const hiddenTexts = document.getElementsByClassName('hidden-text');
+            
+                            for (let i = 0; i < buttons.length; i++) {
+                                buttons[i].addEventListener('click', async () => {
+                                    const currentHiddenText = hiddenTexts[i];
+                                    console.log(currentHiddenText);
+                                    const couponCode = currentHiddenText.textContent.trim();
+            
+                                    if (currentHiddenText.style.display === 'none' || currentHiddenText.style.display === '') {
+                                        currentHiddenText.style.display = 'block';
+                                        buttons[i].textContent = 'Click to Hide Text';
+            
+                                        // Make an AJAX call to save the coupon code in the database
+                                        
+                                        try {
+                                            await fetch('/useCoupon', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json'
+                                                },
+                                                body: JSON.stringify({  couponCode })
+                                            });
+                                        } catch (err) {
+                                            console.error("Failed to save coupon:", err);
+                                        }
+                                    } else {
+                                        currentHiddenText.style.display = 'none';
+                                        buttons[i].textContent = 'Click to Reveal Text';
+                                    }
+                                });
+                            }
+                        });*/
+
+
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const buttons = document.getElementsByClassName('button');
+                const hiddenTexts = document.getElementsByClassName('hidden-text');
+
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].addEventListener('click', async () => {
+                        const currentHiddenText = hiddenTexts[i];
+                        const couponCode = currentHiddenText.textContent.trim();
+
+                        // Make an AJAX call to check if the coupon can be used and deduct coins if possible
+                        try {
+                            const response = await fetch('/useCoupon', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ couponCode })
+                            });
+
+                            const data = await response.json();
+
+                            if (response.ok) {
+                                // Success: Reveal the hidden text and change button text
+                                currentHiddenText.style.display = 'block';
+                                buttons[i].textContent = 'Click to Hide Text';
+                                alert(data.message); // Optional: show a success message
+                                window.location.href = '/account';
+                            } else {
+                                // Error: Display the error message
+
+                                window.location.href = '/account'; // Redirect to account page to display the error message
+                            }
+                        } catch (err) {
+                            console.error('Failed to save coupon:', err);
+                        }
+                    });
+                }
+            });
+
+
+
+
+
+        </script>
+</body>
+
+</html>

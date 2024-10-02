@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpinionTrade</title>
+    <link rel="icon" href="https://t4.ftcdn.net/jpg/05/97/06/33/360_F_597063320_zWzNOwBIEDbsUPUj0NAtilvkGVMdGTPz.jpg"
+         type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="tabsbox.js" defer></script>
+    <style>
+        #strip {
+            width: 100%;
+            height: 8%;
+            background-color: rgb(40, 40, 40);
+            color: white;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            z-index: 1;
+        }
+
+        #page1 {
+
+            height: auto;
+            height: 90vh;
+            width: 100%;
+            background-color: rgb(255, 255, 255);
+            animation: slide 1s 1;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(0%);
+            }
+        }
+
+        #poll-page {
+            padding-top: 7%;
+            width: 100%;
+            height: auto;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .poll {
+            /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+            margin-bottom: 10%;
+            display: grid;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 400px;
+            height: 350px;
+            background: #fff;
+            border: 1px solid rgb(200, 200, 200);
+            border-radius: 10px;
+            box-shadow: 1px 1px 10px 10px rgba(66, 66, 66, 0.05);
+
+
+        }
+
+        .poll .question {
+            padding: 20px 20px 10px;
+            color: #111;
+            font-size: 20px;
+            border-bottom: 1px solid rgb(186, 186, 186);
+
+        }
+
+        .poll .answers {
+            padding: 20px 20px 10px;
+        }
+
+        .poll .answers .answer {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            padding: 0px 10px;
+            line-height: 40px;
+            color: black;
+            margin-bottom: 10px;
+            border: 1px solid #d4d4d4;
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+
+
+        }
+
+        .poll .answers .answer.selected {
+            border: 2px solid #8f9f98;
+        }
+
+        .poll .answers .answer span.percentage-value {
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            width: 40px;
+            transform: translateY(-50%);
+            color: #111;
+            font-size: 15px;
+
+        }
+
+        /* .poll .answers .answer span.percentage-bar {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 40px;
+            height: 100%;
+            background: #ccd8f1;
+            z-index: 1;
+            transition: width 300ms ease-in-out;
+
+        } */
+
+        .poll .answers .answer span.percentage-bar {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 0;
+            /* Initially hidden */
+            height: 100%;
+            background: #ccd8f14b;
+            /* z-index: -1; */
+            transition: width 300ms ease-in-out, opacity 300ms ease-in-out;
+            opacity: 0;
+            /* Initially fully transparent */
+        }
+
+        .poll .answers .answer.selected span.percentage-bar {
+            opacity: 1;
+
+            /* Show the percentage bar when answer is selected */
+        }
+
+        /* .poll .answers .answer span.percentage-bar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 40px;
+    height: 100%;
+    background: #ccd8f1;
+    z-index: -1;
+    transition: width 300ms ease-in-out;
+
+} */
+    </style>
+
+</head>
+
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="header1">
+                <div id="logo"><img
+                        src="https://t4.ftcdn.net/jpg/05/97/06/33/360_F_597063320_zWzNOwBIEDbsUPUj0NAtilvkGVMdGTPz.jpg"
+                        width="100%" height="100%" style="object-fit: cover;"></div>
+                <div class="texts">
+                    <a href="/account">
+                        <p style="color: rgb(45, 45, 45);">Account</p>
+                    </a>
+                </div>
+                <div class="texts">
+                    <a href="https://vcet.edu.in/" target="_blank">
+                        <p style="color: rgb(41, 41, 41); ">VCET</p>
+                    </a>
+                </div>
+                <div class="texts">
+                    <a href="/allevent">
+                        <p style="color: rgb(45, 45, 45);">Poll</p>
+                    </a>
+                </div>
+                <div class="texts">
+                    <a href="/customer">
+                    <p style="color: rgb(45, 45, 45);">Customers</p>
+                    </a>
+                </div>
+
+                <div class="texts">
+                    <a href="/leaderboard">
+                    <p style="display: flex ; align-items: center; justify-content: center; color: rgb(45, 45, 45);" >Leaderboard <img src="https://cdn-icons-png.flaticon.com/128/7799/7799179.png"  style=" width: 27px; padding-left: 5px; "></p>
+                    </a>
+                </div>
+                <div id="contactde">
+                    <p style=text-align:center;><u>Contact Us</u> </p>
+                    <p>9988-00-6677</p>
+                </div>
+            </div>
+            <div id="header2">
+                <div class="icon"><i class="ri-search-line"> </i></div>
+                <div class="icon"><i class="ri-global-line"> </i></div>
+                <div id="login">
+                    <form action="/logout" method="post">
+                        <button type="submit"
+                            style="border-radius: 55px; padding: 10px; color: white; background: #000; width: 80px; cursor: pointer; ">
+                            <i class="ri-user-3-fill"></i>Logout</button>
+
+                    </form>
+                    {{!-- <a href="/login_signup">
+                        <p>Login</p>
+                    </a> --}}
+                </div>
+                <div id="try">
+                    <a href="/index">
+                        <p>OpinionTrade</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="fakeheader"></div>
+        <div id="page1">
+            <div id="strip">
+
+
+                <div class="wrapper">
+                    <div class="icons"><i id="left" class="ri-arrow-left-wide-line"></i></div>
+                    <ul class="tabs-box">
+                        <li class="tab"><a href="/allevent">Allevent</a></li>
+                        <li class="tab"><a href="/cricket">Cricket</a></li>
+                        <li class="tab"><a href="/tech">Technology</a></li>
+                        <li class="tab"><a href="/news">News</a></li>
+                        <li class="tab"><a href="/sustain">Sustainability</a></li>
+                        <li class="tab"><a href="/health">Health&Wellness</a></li>
+                        <li class="tab"><a href="/education">Education</a></li>
+                        <li class="tab"><a href="/entertainment">Entertainment</a></li>
+                        <li class="tab"><a href="/sports">Sports</a></li>
+                        <li class="tab"><a href="/consumer">Consumer Preferences</a></li>
+                        <li class="tab"><a href="/gadgets">Gadgets</a></li>
+                        <li class="tab"><a href="/tour">Tour&Travel</a></li>
+                        <li class="tab"><a href="/economy">Finance&Economy</a></li>
+                        <li class="tab"><a href="/sharemarket">Share Market</a></li>
+                        <li class="tab"><a href="/gaming">Gaming&Esports</a></li>
+                        <li class="tab"><a href="/food">Food&Beverages</a></li>
+                    </ul>
+                    <div class="icons"><i id="right" class="ri-arrow-right-wide-fill"></i></div>
+                </div>
+
+            </div>
+
+
+            <div id="poll-page">
+                <div class="poll">
+                    <div class="question"></div>
+                    <div class="answers"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    {{!-- <script>
+        let polls = [
+            {
+                question: "Which platform do you rely on the most for news?",
+                answers: ["TV", "Social Media", "Newspapers", "News Websites"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What type of news do you seek out the most?",
+                answers: ["Politics", "Technology", "Entertainment", "Sports"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What is the most important factor when choosing a news source?",
+                answers: ["Accuracy", "Speed of Reporting", "Bias-Free Content", "In-Depth Analysis"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How do you verify the accuracy of a news story before sharing it?",
+                answers: ["Fact-Checking Websites", "Multiple News Sources", "Social Media Opinions", "I Don’t Verify"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "Which news source do you trust the most?",
+                answers: ["Local News Channels", "Independent News Websites", "Mainstream Media", "Social Media Influencers"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What is your primary motivation for keeping up with the news?",
+                answers: ["Staying Informed", "Work or Studies", "Social Discussions", "Personal Interest"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "Which international news topic are you following most closely?",
+                answers: ["Geopolitical Conflicts", "Climate Change", "International Sports Events", "Technological Innovations"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How often do you follow breaking news updates?",
+                answers: ["Multiple Times Daily", "Once a Day", "Once a Week", "Rarely"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What do you think is the most reliable format for consuming news?",
+                answers: ["Written Articles", "Video Reports", "Podcasts", "Social Media Threads"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How do you feel about the rise of fake news?",
+                answers: ["Very Concerned", "Somewhat Concerned", "Neutral", "Not Concerned"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "Which media outlet do you believe delivers the most unbiased news?",
+                answers: ["CNN", "BBC", "Al Jazeera", "Fox News"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What type of news coverage do you find most lacking in today’s media?",
+                answers: ["Environmental Issues", "Social Justice", "Local News", "International Affairs"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How often do you share news stories on social media?",
+                answers: ["Frequently", "Occasionally", "Rarely", "Never"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What kind of news subscription service are you most willing to pay for?",
+                answers: ["General News", "Tech News", "Financial News", "I Won’t Pay for News"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What news story do you think has had the biggest impact this year?",
+                answers: ["Climate Change Disasters", "Major Political Elections", "Technological Advancements", "Global Health Crises"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How often do you fact-check a story before sharing?",
+                answers: ["Always", "Often", "Rarely", "Never"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "Which political news story are you most interested in?",
+                answers: ["Election Campaigns", "International Diplomacy", "Policy Changes", "Political Scandals"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How do you feel about news delivered through social media influencers?",
+                answers: ["Trustworthy", "Somewhat Trustworthy", "Untrustworthy", "I Don’t Follow Influencers for News"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "Which format of news reporting do you prefer?",
+                answers: ["Investigative Journalism", "Real-Time Reporting", "Opinion Pieces", "Quick Summaries"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How important is it for news outlets to cover positive stories?",
+                answers: ["Very Important", "Important", "Neutral", "Not Important"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How do you prefer to consume news about scientific breakthroughs?",
+                answers: ["Podcasts", "Written Articles", "Documentaries", "Short Video Summaries"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What is the biggest issue in news media today?",
+                answers: ["Political Bias", "Misinformation", "Clickbait", "Lack of Depth in Coverage"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What is your preferred method of staying informed about local news?",
+                answers: ["Newspapers", "Local TV News", "Social Media", "Local News Apps"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "Which news topic do you think should get more attention?",
+                answers: ["Environmental Issues", "Mental Health", "Economic Inequality", "Global Politics"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How often do you watch or listen to news-related podcasts?",
+                answers: ["Daily", "Weekly", "Monthly", "Never"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How much trust do you have in news from traditional media (TV, newspapers)?",
+                answers: ["Very High", "Somewhat High", "Low", "No Trust"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What’s your primary news source for international updates?",
+                answers: ["TV Networks", "Online News Websites", "Social Media Platforms", "Radio"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What’s the most important feature of a news app?",
+                answers: ["Speed of Updates", "Personalization Options", "No Ads", "Comprehensive Coverage"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How often do you follow health-related news?",
+                answers: ["Daily", "Weekly", "Occasionally", "Rarely"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What motivates you to follow financial news?",
+                answers: ["Investment Opportunities", "Global Economic Updates", "Personal Finance Tips", "I Don’t Follow Financial News"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What’s the biggest problem with online news?",
+                answers: ["Paywalls", "Excessive Ads", "Misinformation", "Lack of Credible Sources"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What new technology do you think will shape the future of news?",
+                answers: ["AI-Powered News", "Virtual Reality (VR)", "Data Journalism", "Blockchain News Verification"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What area of investigative journalism do you find most valuable?",
+                answers: ["Political Corruption", "Corporate Misconduct", "Human Rights Violations", "Environmental Issues"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "What’s the most important quality in a news anchor?",
+                answers: ["Credibility", "Charisma", "Accuracy", "Impartiality"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            },
+            {
+                question: "How important is it for news outlets to cover global humanitarian crises?",
+                answers: ["Very Important", "Important", "Neutral", "Not Important"],
+                pollCount: 0,
+                answerWeight: [0, 0, 0, 0],
+                selectedAnswer: -1,
+            }
+
+
+
+
+        ];
+
+        let pollContainer = document.getElementById('poll-page');
+
+
+         // Shuffle function to randomize the order of polls
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function renderPoll(poll, index) {
+            let pollHTML = `
+            <div class="poll" id="poll-${index}">
+                <div class="question">${poll.question}</div>
+                <div class="answers">
+                    ${poll.answers.map((answer, i) => `
+                        <div class="answer" onclick="markAnswer(${index}, ${i})">
+                            ${answer}
+                            <span class="percentage-bar"></span>
+                            <span class="percentage-value"></span>
+                        </div>
+                    `).join("")}
+                </div>
+            </div>
+        `;
+            return pollHTML;
+        }
+
+        function renderAllPolls() {
+            pollContainer.innerHTML = polls.map((poll, index) => renderPoll(poll, index)).join("");
+        }
+
+        // Shuffle the polls before rendering
+        shuffleArray(polls);
+        renderAllPolls();
+
+
+        function markAnswer(pollIndex, answerIndex) {
+            let poll = polls[pollIndex];
+            poll.selectedAnswer = answerIndex;
+
+
+            try {
+                document.querySelector(`#poll-${pollIndex} .answer.selected`)?.classList.remove("selected");
+            } catch (msg) { }
+
+
+            document.querySelectorAll(`#poll-${pollIndex} .answer`)[answerIndex].classList.add("selected");
+
+            showResults(pollIndex);
+        }
+
+
+        function showResults(pollIndex) {
+            let poll = polls[pollIndex];
+            let answers = document.querySelectorAll(`#poll-${pollIndex} .answer`);
+            for (let i = 0; i < answers.length; i++) {
+                let percentage = 0;
+                if (i === poll.selectedAnswer) {
+                    percentage = Math.round((poll.answerWeight[i] + 1) * 100 / (poll.pollCount + 1));
+                } else {
+                    percentage = Math.round(poll.answerWeight[i] * 100 / (poll.pollCount + 1));
+                }
+
+                let percentageBar = answers[i].querySelector(".percentage-bar");
+                percentageBar.style.width = percentage + "%";
+                percentageBar.style.opacity = 1;
+                answers[i].querySelector(".percentage-value").innerText = percentage + "%";
+            }
+        }
+
+
+        function savePollToDB(poll, category) {
+            fetch('/save-poll', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...poll,
+                    category, // Pass category to backend
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Poll saved:', poll.question);
+                    } else {
+                        console.error('Error saving poll:', data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+
+        polls.forEach(poll => {
+            savePollToDB({
+                question: poll.question,
+                answers: poll.answers,
+                answerWeight: poll.answerWeight,
+                pollCount: poll.pollCount,
+            }, 'news');
+        });
+
+    </script> --}}
+
+
+
+        <script>
+        const userId = "{{userId}}"; // Embedding userId from the server
+        let polls = [];
+        let pollContainer = document.getElementById('poll-page');
+
+        // Fetch polls from the backend
+        function fetchPolls() {
+            fetch('/polls/news')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        polls = data.polls;
+                        renderAllPolls();
+                    } else {
+                        console.error('Failed to fetch polls:', data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Shuffle polls array to randomize order
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+
+        function calculatePercentage(answerWeight, pollCount) {
+            if (pollCount === 0) {
+                return 0; // Avoid division by zero
+            }
+            return Math.round((answerWeight * 100) / pollCount);
+        }
+
+
+        // Render a single poll
+        function renderPoll(poll, index) {
+            let pollHTML = `
+        <div class="poll" id="poll-${index}">
+            <div class="question">${poll.question}</div>
+            <div class="answers">
+                ${poll.answers.map((answer, i) => `
+                    <div class="answer ${poll.selectedAnswer === i ? 'selected' : ''} ${poll.selectedAnswer !== -1 ? 'disabled' : ''}" 
+                        onclick="${poll.selectedAnswer === -1 ? `markAnswer(${index}, ${i})` : ''}">
+                        ${answer}
+                        ${poll.selectedAnswer !== -1
+                    ? `<span class="percentage-bar" style="width: ${calculatePercentage(poll.answerWeights[i], poll.pollCount)}%; opacity: 1;"></span>
+                               <span class="percentage-value">${calculatePercentage(poll.answerWeights[i], poll.pollCount)}%</span>`
+                    : `<span class="percentage-bar" style="width: 0%; opacity: 0;"></span>
+                               <span class="percentage-value" style="opacity: 0;"></span>`
+                }
+                    </div>
+                `).join("")}
+            </div>
+        </div>
+    `;
+            return pollHTML;
+        }
+
+
+        // Render all polls and check user answers
+        function renderAllPolls() {
+            shuffleArray(polls);
+            fetch(`/user-answered-polls/${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const userPolls = data.answeredPolls;
+                        pollContainer.innerHTML = '';
+
+                        polls.forEach((poll, index) => {
+                            const userPoll = userPolls.find(p => p.pollId === poll._id);
+                            poll.selectedAnswer = userPoll ? userPoll.selectedAnswer : -1;
+                            pollContainer.innerHTML += renderPoll(poll, index);
+                        });
+                    } else {
+                        console.error('Error fetching user polls:', data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Handle poll answer selection
+        function markAnswer(pollIndex, answerIndex) {
+            let poll = polls[pollIndex];
+
+            // Prevent users from selecting an answer if they've already answered this poll
+            if (poll.selectedAnswer !== -1) {
+                return; // Exit if the user has already answered this poll
+            }
+
+            // Update the selected answer and poll statistics
+            poll.answerWeights[answerIndex] += 1;
+            poll.pollCount += 1;
+            poll.selectedAnswer = answerIndex;
+
+
+            try {
+                document.querySelector(`#poll-${pollIndex} .answer.selected`)?.classList.remove("selected");
+            } catch (msg) { }
+
+
+            document.querySelectorAll(`#poll-${pollIndex} .answer`)[answerIndex].classList.add("selected");
+
+
+            // Show the updated results immediately after selecting the answer
+            showResults(pollIndex);
+
+            // Save the selected answer to the database
+            saveUserPollAnswer(poll._id, answerIndex);
+
+
+            // Disable further answer selection for this poll
+            disablePollSelection(pollIndex);
+        }
+
+
+        // Disable further selection for a poll
+        function disablePollSelection(pollIndex) {
+            const answers = document.querySelectorAll(`#poll-${pollIndex} .answer`);
+            answers.forEach(answer => answer.classList.add('disabled'));
+        }
+
+        // Save user's selected poll answer to the backend
+        function saveUserPollAnswer(pollId, selectedAnswer) {
+            const category = 'news'; // Replace this with the appropriate category from your application logic
+            fetch(`/save-user-answer/${category}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId, pollId, selectedAnswer }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.success) {
+                        console.error('Error saving user answer:', data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Display poll results
+        function showResults(pollIndex) {
+            let poll = polls[pollIndex];
+            let answers = document.querySelectorAll(`#poll-${pollIndex} .answer`);
+
+            for (let i = 0; i < answers.length; i++) {
+                // If the user has answered the poll, show the percentage bar
+                let percentage = calculatePercentage(poll.answerWeights[i], poll.pollCount);
+
+                // Display the percentage bar and value for each option
+                let percentageBar = answers[i].querySelector(".percentage-bar");
+                if (percentageBar) {
+                    percentageBar.style.width = percentage + "%";
+                    percentageBar.style.opacity = 1; // Ensure the bar is visible
+                }
+
+                let percentageValue = answers[i].querySelector(".percentage-value");
+                if (percentageValue) {
+                    percentageValue.innerText = percentage + "%";
+                    percentageValue.style.opacity = 1; // Ensure the value is visible
+                }
+            }
+        }
+
+
+
+
+
+        // Fetch polls when the page loads
+        document.addEventListener("DOMContentLoaded", fetchPolls);
+    </script>
+
+</body>
+
+</html>
