@@ -14,16 +14,46 @@ const userpoll = require('./db/userpoll');
 const templatePath = path.join(__dirname, "../views");
 const pollRoutes = require('./pollRoutes');
 const downloadcollection = require('./downloadcollection');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const admin = require('firebase-admin');
+
+require('dotenv').config();
+const  cloud_name= process.env.CLOUD_NAME;
+const  api_key= process.env.API_KEY;
+const  api_secret= process.env.API_SECRET;
+
+
+
+
+// Cloudinary configuration
+cloudinary.config({
+    cloud_name:`${cloud_name}`,
+    api_key:`${api_key}`,
+    api_secret:`${api_secret}`,
+});
 
 
 
 
 
-// Set Storage Engine
-const storage = multer.diskStorage({
-    destination: './views/uploads/', // Where images will be stored
-    filename: (req, file, cb) => {
-      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+
+
+
+
+
+
+
+//Set Cloudinary storage engine with a custom filename
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'uploads', // Cloudinary folder
+        public_id: (req, file) => {
+            // Similar to your existing file naming strategy
+            return file.fieldname + '-' + Date.now();
+        },
+        format: async (req, file) => undefined,
     }
 });
   
@@ -38,13 +68,14 @@ const upload = multer({
 
 // Check file type function
 function checkFileType(file, cb) {
-    const filetypes = /jpeg|jpg|png|avif|gif/;
+    const filetypes = /jpeg|jpg|png|avif|webp|gif/;
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
     const mimetype = filetypes.test(file.mimetype);
     if (mimetype && extname) {
       return cb(null, true);
     } else {
-      cb('Error: Images Only!');
+       
+      cb('Error: Only images (jpeg, jpg, png, gif, avif, webp) are allowed!');
     }
 }
 
@@ -108,7 +139,7 @@ app.get("/userProfile", requireLogin, (req, res) => {
 });
 
 
-app.get("/login_signup", (req, res) => {
+app.get("/", (req, res) => {
     res.render("login_signup");
 });
 
@@ -195,12 +226,13 @@ const getTopCoinRankers = async () => {
         })
         .select('coin profileImage createdBy');  
 
-    
+        
     const processedRankers = topCoinRankers.map(ranker => {
         if (ranker.createdBy && ranker.createdBy.username) {
             ranker.createdBy.username = ranker.createdBy.username.split('@')[0];  
         }
-        ranker.profileImage = ranker.profileImage || 'default.png';  // Set the path to your default image
+        ranker.profileImage = ranker.profileImage || 'uploads/profileImage-1727969251474';  // Set the path to your default image
+        
         return ranker;
     });
 
@@ -220,7 +252,7 @@ const getTopPollRankers = async () => {
 
     // Step 2: Fetch `UserProfile123` to get the `profileImage` for each user
     const processedRankers = await Promise.all(topPollRankers.map(async ranker => {
-        let profileImage = 'default.png'; // Default profile image
+        let profileImage = 'uploads/profileImage-1727969251474'; // Default profile image
 
         // Fetch the UserProfile123 document using the userId
         const userProfile = await UserProfile.findOne({ createdBy: ranker.userId._id }).select('profileImage');
@@ -289,7 +321,7 @@ app.get("/leaderboard", requireLogin, async (req, res) => {
 
         // Combine poll and coin data into one object
         const rankData = { ...pollRankData, ...coinRankData };
-
+        
         
         res.render("leaderboard", rankData);
 

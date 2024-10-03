@@ -60,7 +60,7 @@
             width: 96%;
             height: 100%;
             position: relative;
-            top: -4.5%;
+            
             display: block;
             overflow: scroll;
             overflow-x: hidden;
@@ -457,7 +457,8 @@
 
                         <div class="acc-logo" style="font-size: x-large;">
                             {{#if avatar}}
-                            <img src="/uploads/{{userProfile.profileImage}}" alt="Profile Image"
+                            {{!-- <img src="/uploads/{{userProfile.profileImage}}" alt="Profile Image" --}}
+                            <img src="https://res.cloudinary.com/dqkcqjwyk/image/upload/v1727967558/{{userProfile.profileImage}}" alt="Profile Image"
                                 style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; box-shadow: 0px 5px 10px rgb(163, 163, 163); ">
                             <br>{{username}}
                             {{else}}
