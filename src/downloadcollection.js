@@ -6,7 +6,7 @@ const customerdata = require('./db/customerdata');
 const session = require('express-session');
 const router = express.Router();
 
-const url = 'mongodb+srv://keshavkumar232803108:ghjklgfdsa@cluster0.krbk7.mongodb.net/OPINION_TRADE?retryWrites=true&w=majority&appName=Cluster0';
+const url = 'mongodb+srv://<username:pass>@cluster0.krbk7.mongodb.net/OPINION_TRADE?retryWrites=true&w=majority&appName=Cluster0';
 const dbName = 'OPINION_TRADE';
 
 router.post('/downloadcollection', async (req, res) => {
