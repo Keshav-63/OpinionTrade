@@ -6,7 +6,11 @@ const customerdata = require('./db/customerdata');
 const session = require('express-session');
 const router = express.Router();
 
-const url = 'mongodb+srv://<username:pass>@cluster0.krbk7.mongodb.net/OPINION_TRADE?retryWrites=true&w=majority&appName=Cluster0';
+require('dotenv').config();
+
+const dbHost = process.env.DB_HOST;
+
+const url = dbHost;
 const dbName = 'OPINION_TRADE';
 
 router.post('/downloadcollection', async (req, res) => {
