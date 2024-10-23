@@ -1209,11 +1209,25 @@
                 if (sectionToShow) {
                     sectionToShow.classList.add('active');
                 }
+
+
+
             }
 
-            // Optionally, you can show a default section on page load
+
+
+
+
+            // Show default section or section from URL
             document.addEventListener('DOMContentLoaded', () => {
-                showSection('profile'); // Default to showing the profile section
+                const urlParams = new URLSearchParams(window.location.search); // For query parameters
+                const sectionFromUrl = urlParams.get('section') || window.location.hash.substring(1); // For query or hash
+
+                if (sectionFromUrl) {
+                    showSection(sectionFromUrl);
+                } else {
+                    showSection('profile'); // Default to showing the profile section
+                }
             });
 
 
