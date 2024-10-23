@@ -164,7 +164,7 @@
 
 <body>
     <div id="main">
-        <div id="header">
+          <div id="header">
             <div id="header1">
                 <div id="logo"><img
                         src="https://t4.ftcdn.net/jpg/05/97/06/33/360_F_597063320_zWzNOwBIEDbsUPUj0NAtilvkGVMdGTPz.jpg"
@@ -175,8 +175,8 @@
                     </a>
                 </div>
                 <div class="texts">
-                    <a href="https://vcet.edu.in/" target="_blank">
-                        <p style="color: rgb(41, 41, 41); ">VCET</p>
+                    <a href="/account?section=aboutus">
+                        <p style="color: rgb(41, 41, 41); ">About Us</p>
                     </a>
                 </div>
                 <div class="texts">
@@ -185,23 +185,34 @@
                     </a>
                 </div>
                 <div class="texts">
+
                     <a href="/customer">
-                    <p style="color: rgb(45, 45, 45);">Customers</p>
+                        <p style="color: rgb(45, 45, 45);">Customers</p>
                     </a>
+
                 </div>
 
                 <div class="texts">
                     <a href="/leaderboard">
-                    <p style="display: flex ; align-items: center; justify-content: center; color: rgb(45, 45, 45);" >Leaderboard <img src="https://cdn-icons-png.flaticon.com/128/7799/7799179.png"  style=" width: 27px; padding-left: 5px; "></p>
+                        <p
+                            style="display: flex ; align-items: center; justify-content: center; color: rgb(45, 45, 45);">
+                            Leaderboard <img src="https://cdn-icons-png.flaticon.com/128/7799/7799179.png"
+                                style=" width: 27px; padding-left: 5px; "></p>
                     </a>
                 </div>
                 <div id="contactde">
-                    <p style=text-align:center;><u>Contact Us</u> </p>
-                    <p>9988-00-6677</p>
+                    {{!-- <p style=text-align:center;><u>Contact Us</u> </p>
+                    <p>9869-33-0911</p> --}}
+ 
+                        <a href="/account?section=contactus" style="text-align: center;">
+                            <p style="color: rgb(41, 41, 41); ">Contact Us</p>
+                        </a>
+           
+                    <p>9869-33-0911</p>
                 </div>
             </div>
             <div id="header2">
-                <div class="icon"><i class="ri-search-line"> </i></div>
+                {{!-- <div class="icon"><i class="ri-search-line"> </i></div> --}}
                 <div class="icon"><i class="ri-global-line"> </i></div>
                 <div id="login">
                     <form action="/logout" method="post">
@@ -210,12 +221,12 @@
                             <i class="ri-user-3-fill"></i>Logout</button>
 
                     </form>
-
+                    {{!-- <a href="/login_signup">
+                        <p>Logout</p>
+                    </a> --}}
                 </div>
                 <div id="try">
-                    <a href="/index">
-                        <p>OpinionTrade</p>
-                    </a>
+                    <p>OpinionTrade</p>
                 </div>
             </div>
         </div>
